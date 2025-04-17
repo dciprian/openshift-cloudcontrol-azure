@@ -1,0 +1,15 @@
+services:
+    pipelines-cli:
+        volumes:
+            - "<path to your infra folder>:/infra" # Path to the folder you keep infrastructure code
+        image: "pipelines-cloud-control:latest"
+        ports:
+            - "8080" # CloudControlCenter port
+            - "8081" # Port that can be used for port forwardings
+        environment:
+            - >-
+              FEATURES=terraform:1.9.2 
+              helm:3.10.0 
+              kubernetes 
+              terragrunt:0.61.0
+              direnv
